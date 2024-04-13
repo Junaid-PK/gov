@@ -1,0 +1,35 @@
+@font-face {
+    font-family: "flaticon_kemcode";
+    src: url("./flaticon_kemcode.ttf?1b752b7e6ce52a36ebc9677207b08c96") format("truetype"),
+url("./flaticon_kemcode.woff?1b752b7e6ce52a36ebc9677207b08c96") format("woff"),
+url("./flaticon_kemcode.woff2?1b752b7e6ce52a36ebc9677207b08c96") format("woff2"),
+url("./flaticon_kemcode.eot?1b752b7e6ce52a36ebc9677207b08c96#iefix") format("embedded-opentype"),
+url("./flaticon_kemcode.svg?1b752b7e6ce52a36ebc9677207b08c96#flaticon_kemcode") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_kemcode !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-aeroplane-landing:before {
+    content: "\f101";
+}
+.flaticon-hotel:before {
+    content: "\f102";
+}
+.flaticon-custom:before {
+    content: "\f103";
+}
+.flaticon-clipboard:before {
+    content: "\f104";
+}
+.flaticon-business-trip:before {
+    content: "\f105";
+}
