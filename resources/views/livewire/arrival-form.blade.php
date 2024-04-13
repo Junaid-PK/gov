@@ -36,7 +36,7 @@
                             <div class="card card-custom">
                                 <div class="card-body p-0">
                                     <div class="card-body" style="text-align:center">
-                                        <img src='{{ asset('Content/Images/dalogo.jpg') }}' style="width:25%" />
+                                        <img src='{{ asset('Content/images/dalogo.jpg') }}' style="width:25%" />
 
                                     </div>
                                     <div class="wizard wizard-1">
