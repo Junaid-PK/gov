@@ -39,9 +39,10 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="shortcut icon" href="{{ asset('Content/assets/media/logos/favicon.ico') }}" />
 </head>
 <style>
+
     @@font-face {
         font-family: 'Inter';
-        src: url('../Content/fonts/Inter/Inter-Regular.ttf');
+        src: url(`'{{ asset('Content/fonts/Inter/Inter-Regular.ttf') }}'`);
     }
 
     .classname {
@@ -124,7 +125,7 @@ License: You must have a valid license purchased only from themeforest(the above
     .The-Official-Tourism {
         width: 313px;
         height: 34px;
-        margin:  1px 19px 3px 19px;
+        margin:  1px 10px 3px 19px;
         font-family: Inter;
         font-size: 14px;
         font-weight: normal;
@@ -135,15 +136,15 @@ License: You must have a valid license purchased only from themeforest(the above
         color: #fff;
     }
     .imgx1024 {
-        padding-top:15px;
-        width: 60px;
-        height: 60px;
-        margin: 2px 19px 0 0;
+        padding-top:10px;
+        width: 70px;
+        height: 70px;
+        margin: 1px 15px 0 0;
         object-fit: contain;
     }
 
     .Download-Explore-Dom {
-        width: 300px;
+        width: 500px;
         height: 24px;
         margin: 0 0 0 0;
         font-family: Inter;
@@ -182,9 +183,9 @@ License: You must have a valid license purchased only from themeforest(the above
         border-radius: 28px;
     }
     .button {
-
-        height:40px;
-        background-color: #3aaf4a;
+        height: 40px;
+        background-color: #eb6dac;
+        /*background-color: #3aaf4a;*/
         border: none;
         color: white;
         /*padding: 20px;*/
@@ -234,8 +235,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
     .Welcome-to-Dominica {
-        width: 980px;
-        height: 120px;
+        width: 1180px;
+        height: 110px;
         margin: 0 0 12px;
         font-family: Inter;
         font-size: 50px;
@@ -291,18 +292,22 @@ License: You must have a valid license purchased only from themeforest(the above
         background-repeat: no-repeat;
     }
 
+    .Rectangle {
+/*        width: 1600px;
+        height: 100vh;*/
+       /* padding: 232px 310px 42px;*/
+/*        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 1%, rgba(0, 0, 0, 0.5));
+        height: 100%;*/
+    }
 </style>
 <!--end::Head-->
 
                         <body style="background-image:Url({{ asset('Content/bkgroundImg.png') }});background-repeat : no-repeat; background-size:cover">
                             <div class="Rectangle">
                                 <div class="grid-container">
-                                    <img src="{{ asset('Content/logo.png') }}" class="logo" width="40%" style="padding-bottom:2px">
-                                    <span class="The-Nature-Island" style="padding-bottom:50px">
-                                        The Nature Island
-                                    </span>
+                                    <img src="{{ asset('Content/logoAB.png') }}" class="logo" width="40%" style="padding-bottom:2px">
                                     <span class="Welcome-to-Dominica" style="padding-bottom:10px">
-                                        Welcome to Dominica Online Customs and Immigration Portal
+                                        Welcome to Antigua & Barbuda Online Customs and Immigration Portal
                                     </span>
                                     <span class="You-are-required-to" style="margin-bottom:25px">
                                         You are required to complete the online Immigration and Customs Travel Form, which will be available 72 hours prior to your arrival in Dominica.
@@ -313,8 +318,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </span>
                                     <div class="appBox">
                                         <div class="container">
-                                            <img src="{{ asset('Content/exploreDomLogo.png') }}" class="imgx1024" />
-                                            <span class="The-Official-Tourism"><p class="Download-Explore-Dom">Download Explore Dominica</p>The Official Tourism App of Dominica to Start your Adventure Now!</span>
+                                            <img src="{{ asset('Content/certified.png') }}" class="imgx1024" />
+                                            <span class="The-Official-Tourism"><p class="Download-Explore-Dom">Welcome to our twin-island paradise</p>Antigua’s shoreline is washed almost exclusively by the Caribbean Sea and is hugged by 95 miles of superb coastline.</span>
                                             <img src="{{ asset('Content/apple.png') }}" class="appleL" width="150px">
                                             <img src="{{ asset('Content/google.png') }}" class="androidL" width="155px">
                                         </div>

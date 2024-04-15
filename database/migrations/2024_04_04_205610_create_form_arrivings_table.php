@@ -62,6 +62,8 @@ return new class extends Migration
             $table->dateTime('submittedDate')->nullable();
             $table->string('acceptedOfficer', 500);
             $table->dateTime('intendedDateArriv')->nullable();
+            // passport_image
+            $table->string('passport_image', 500)->nullable();
             $table->timestamps();
         });
     }

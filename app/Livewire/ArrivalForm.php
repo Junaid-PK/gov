@@ -5,6 +5,12 @@ namespace App\Livewire;
 use App\Models\FormArriving;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ArrivalForm extends Component
 {
@@ -60,6 +66,16 @@ class ArrivalForm extends Component
     public $accResidence = false;
     public $accOther = false;
     public $accomodation_other;
+    public $cusQuestFruits = false;
+    public $cusQuestPhar = false;
+    public $cusQuestArms = false;
+    public $cusQuestMerch = false;
+    public $cusQuestMon = false;
+    public $ncusQuestFruits = false;
+    public $ncusQuestPhar = false;
+    public $ncusQuestArms = false;
+    public $ncusQuestMerch = false;
+    public $ncusQuestMon = false;
 
 
     public function render()
@@ -82,7 +98,8 @@ class ArrivalForm extends Component
 
     public function submitForm()
     {
-        FormArriving::create([
+
+        $form = FormArriving::create([
             'flightNo' => $this->flight_no,
             'Boarded_At' => $this->boarded_at,
             'arrivingBy_fk' => $this->arriving_by,
@@ -129,7 +146,41 @@ class ArrivalForm extends Component
             'acceptedOfficer' => 'x'
         ]);
 
-        return redirect()->route('home');
+        //
+        $this->passport_image->store(path: 'passport_images');
+        session()->put('formid', $form->id);
+        // qr
+        $qrUrl = env('APP_URL').'/admin//form-arrivings/'.$form->id.'/view';
+        $qrImg = QrCode::size(150)->generate($qrUrl);
+
+        // make pdf from view
+        $pdf = FacadePdf::loadView('results', ['form' => $form, 'qrImg' => $qrImg, 'firstName' => $this->first_name, 'middleName' => $this->middle_name, 'lastName'=> $this->last_name, 'cusQuestFruits'=> $this->cusQuestFruits,'cusQuestPhar' => $this->cusQuestPhar, 'cusQuestArms' => $this->cusQuestArms, 'cusQuestMerch'=>$this->cusQuestMerch, 'cusQuestMon' => $this->cusQuestMon]);
+        $pdfOutput = $pdf->output();
+
+        // Define the PDF file name
+        $pdfFileName = 'FormArriving_' . $form->id . '.pdf';
+
+        // Store PDF locally or any storage disk
+        Storage::put('public/forms/'.$pdfFileName, $pdfOutput);
+
+        // Send email with PDF attachment
+        Mail::send('results', ['form' => $form, 'qrImg' => $qrImg, 'firstName' => $this->first_name, 'middleName' => $this->middle_name, 'lastName'=> $this->last_name, 'cusQuestFruits'=> $this->cusQuestFruits,'cusQuestPhar' => $this->cusQuestPhar, 'cusQuestArms' => $this->cusQuestArms, 'cusQuestMerch'=>$this->cusQuestMerch, 'cusQuestMon' => $this->cusQuestMon], function ($message) use ($form, $pdfOutput, $pdfFileName) {
+            $message->to($form->email)
+                    ->subject('Form Submission Confirmation')
+                    ->attachData($pdfOutput, $pdfFileName, [
+                        'mime' => 'application/pdf',
+                    ]);
+        });
+
+
+        // Define the PDF file name
+        $pdfFileName = 'FormArriving_' . $form->id . '.pdf';
+
+        // Send email with PDF attachment
+        // Mail::send(new FormSubmitted($form, $pdfOutput, $pdfFileName));
+        // email
+
+        return redirect()->route('success');
     }
 
     private function validateCurrentStep()

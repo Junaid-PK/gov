@@ -36,7 +36,7 @@
                             <div class="card card-custom">
                                 <div class="card-body p-0">
                                     <div class="card-body" style="text-align:center">
-                                        <img src='{{ asset('Content/images/dalogo.jpg') }}' style="width:25%" />
+                                        <img src='{{ asset('Content/images/ABTAlogo.png') }}' style="width:25%" />
 
                                     </div>
                                     <div class="wizard wizard-1">
@@ -848,27 +848,10 @@
                                                 <div class="pb-5">
                                                     <h4 class="mb-10 font-weight-bold text-dark">Customs</h4>
                                                     <section>
-
-
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <label class="form-check-label">
-                                                                    1. Number of pieces of luggage
-                                                                </label>
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-3">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-3">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <label class="form-check-label">
-                                                                    2. I am (We are) bringing:
+                                                                    1. I am (We are) bringing:
                                                                 </label>
                                                                 <label class="form-check-label">
                                                                     (a) fruits, plants, cut flowers, vegetables, soil,
@@ -881,9 +864,11 @@
                                                                         <div class="form-group">
                                                                             <div class="radio-list">
                                                                                 <label class="radio radio-lg">
+                                                                                    <input type="checkbox" wire:model="cusQuestFruits">
                                                                                     <span></span>Yes
                                                                                 </label>
                                                                                 <label class="radio radio-lg">
+                                                                                    <input type="checkbox" wire:model="ncusQuestFruits">
                                                                                     <span></span>No
                                                                                 </label>
                                                                             </div>
@@ -904,11 +889,11 @@
                                                                         <div class="form-group">
                                                                             <div class="radio-list">
                                                                                 <label class="radio radio-lg">
-
+                                                                                    <input type="checkbox" wire:model="cusQuestPhar">
                                                                                     <span></span>Yes
                                                                                 </label>
                                                                                 <label class="radio radio-lg">
-
+                                                                                    <input type="checkbox" wire:model="ncusQuestPhar">
                                                                                     <span></span>No
                                                                                 </label>
                                                                             </div>
@@ -929,11 +914,11 @@
                                                                         <div class="form-group">
                                                                             <div class="radio-list">
                                                                                 <label class="radio radio-lg">
-
+                                                                                    <input type="checkbox" wire:model="cusQuestArms">
                                                                                     <span></span>Yes
                                                                                 </label>
                                                                                 <label class="radio radio-lg">
-
+                                                                                    <input type="checkbox" wire:model="ncusQuestArms">
                                                                                     <span></span>No
                                                                                 </label>
                                                                             </div>
@@ -957,11 +942,11 @@
                                                                         <div class="form-group">
                                                                             <div class="radio-list">
                                                                                 <label class="radio radio-lg">
-
+                                                                                    <input type="checkbox" wire:model="cusQuestMerch">
                                                                                     <span></span>Yes
                                                                                 </label>
                                                                                 <label class="radio radio-lg">
-
+                                                                                    <input type="checkbox" wire:model="ncusQuestMerch">
                                                                                     <span></span>No
                                                                                 </label>
                                                                             </div>
@@ -974,7 +959,7 @@
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <label class="form-check-label">
-                                                                    5. I am( We are )
+                                                                    2. I am( We are )
                                                                 </label><br />
                                                                 <label class="form-check-label">
                                                                     carrying currency or monetary instruments over (EC
@@ -985,9 +970,11 @@
                                                                         <div class="form-group">
                                                                             <div class="radio-list">
                                                                                 <label class="radio radio-lg">
+                                                                                    <input type="checkbox" wire:model="cusQuestMon">
                                                                                     <span></span>Yes
                                                                                 </label>
                                                                                 <label class="radio radio-lg">
+                                                                                    <input type="checkbox" wire:model="ncusQuestMon">
                                                                                     <span></span>No
                                                                                 </label>
                                                                             </div>
@@ -1015,19 +1002,25 @@
                                                         <div class="row">
                                                             <div class="col-lg-3">
                                                                 <div>Flight/Vessel No. <label id="labelField"></label>
+                                                                    {{ $flight_no }}
                                                                 </div>
                                                                 <div>Boarded At. <label id="boardedAt_fkLabel"></label>
+                                                                    {{ $boarded_at }}
                                                                 </div>
                                                                 <div>Arriving By <label
-                                                                        id="arrivingBy_fkLabel"></label></div>
-                                                                <div>Date of Intended Arrival </div>
+                                                                        id="arrivingBy_fkLabel"></label>
+                                                                        {{ $arriving_by }}
+                                                                </div>
+                                                                <div>Date of Intended Arrival {{ $date_intended }} </div>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <div>Port of Disem. </div>
-                                                                <div>Length of Stay Abroad <label
+                                                                <div>Port of Disem. {{ $port_of_disembarkation }}</div>
+                                                                <div>Length of Stay Abroad {{ $len_of_stay_abroad }}<label
                                                                         id="lenStayField"></label></div>
                                                                 <div>Length of Stay Here <label
-                                                                        id="lenAbrField"></label></div>
+                                                                        id="lenAbrField"></label>
+                                                                        {{ $len_of_stay }}
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1040,27 +1033,42 @@
                                                         <div class="row">
                                                             <div class="col-lg-3">
                                                                 <div>First Name <label id="firstNameField"></label>
+                                                                    {{ $first_name }}
                                                                 </div>
                                                                 <div>Date of Birth <label id=""></label>
+                                                                    {{ $dob }}
                                                                 </div>
                                                                 <div>Marital Status <label id="marStatusLabel"></label>
+                                                                    {{ $marital_status }}
                                                                 </div>
-                                                                <div>Email <label id="emailField"></label></div>
+                                                                <div>Email <label id="emailField"></label>
+                                                                    {{ $email }}
+                                                                </div>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <div>Middle Name <label id="middleNameField"></label>
+                                                                    {{ $middle_name }}
                                                                 </div>
                                                                 <div>Place of Birth <label
-                                                                        id="birthCountry_fkLabel"></label></div>
-                                                                <div>Occupation <label id="OccuField"></label></div>
+                                                                        id="birthCountry_fkLabel"></label>
+                                                                        {{ $place_of_birth }}
+                                                                </div>
+                                                                <div>Occupation <label id="OccuField"></label>
+                                                                    {{ $occupation }}
+                                                                </div>
                                                                 <div>Local Number <label id="localNumField"></label>
+                                                                    {{ $local_number }}
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <div>Last Name <label id="lastNameField"></label>
+                                                                    {{ $last_name  }}
                                                                 </div>
-                                                                <div>Gender <label id="gender_fkLabel"></label></div>
+                                                                <div>Gender <label id="gender_fkLabel"></label>
+                                                                    {{ $gender }}
+                                                                </div>
                                                                 <div>Nationality <label id="nationalityLabel"></label>
+                                                                    {{ $nationality }}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1068,32 +1076,47 @@
                                                         <div class="row">
                                                             <div class="col-lg-3">
                                                                 <div>Travel Document Type <label
-                                                                        id="travelLabel"></label></div>
+                                                                        id="travelLabel"></label>
+                                                                        {{ $doc_type}}
+                                                                </div>
                                                                 <div>Country of Issue <label id="countryLabel"></label>
+                                                                    {{ $country_of_issue }}
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <div>Travel Document Number <label
-                                                                        id="passNumField"></label></div>
+                                                                        id="passNumField"></label>
+                                                                        {{ $doc_number }}
+                                                                </div>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <div>Date of Issue <label id=""></label></div>
+                                                                <div>Date of Issue <label id=""></label>
+                                                                    {{ $date_of_issue }}
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-3">
                                                                 <div>Home Address <label id="homeAddressField"></label>
+                                                                    {{ $home_address }}
                                                                 </div>
-                                                                <div>Zip Code <label id="zipCodeField"></label></div>
+                                                                <div>Zip Code <label id="zipCodeField"></label>
+                                                                    {{ $zip_code }}
+                                                                </div>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <div>City/Town <label id="cityTownField"></label></div>
+                                                                <div>City/Town <label id="cityTownField"></label>
+                                                                    {{  $city }}
+                                                                </div>
                                                                 <div>Home Country <label id="homeCountryLabel"></label>
+                                                                    {{ $home_country }}
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <div>State / Province <label
-                                                                        id="stateProvField"></label></div>
+                                                                        id="stateProvField"></label>
+                                                                        {{ $state }}
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -1106,23 +1129,76 @@
                                                     <div class="text-dark-50 line-height-lg">
                                                         <div class="row">
                                                             <div class="col-lg-3">
-                                                                <div>Business: <label id="purpBusField"></label> </div>
-                                                                <div>Honeymoon: <label id="purpHonField"></label>
+                                                                <div>Business: <label id="purpBusField"></label>
+                                                                    @if ($purpBusiness)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
                                                                 </div>
-                                                                <div>Vacation: <label id="purpVacField"></label> </div>
+                                                                <div>Honeymoon: <label id="purpHonField"></label>
+                                                                    @if ($purpHoneymoon)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
+                                                                <div>Vacation: <label id="purpVacField"></label>
+                                                                    @if ($purpVaction)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
                                                                 <div>Specify: <label id="purpSpecifyField"></label>
+                                                                    {{ $purpose_other }}
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <div>Study: <label id="purpStudyField"></label> </div>
-                                                                <div>Meeting: <label id="purpMeetField"></label> </div>
-                                                                <div>Visit: <label id="purpVisitField"></label> </div>
+                                                                <div>Study: <label id="purpStudyField"></label>
+                                                                    @if ($purpStudy)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
+                                                                <div>Meeting: <label id="purpMeetField"></label>
+                                                                    @if ($purpMeeting)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
+                                                                <div>Visit: <label id="purpVisitField"></label>
+                                                                    @if ($purpVisit)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <div>Conference: <label id="purpConField"></label>
+                                                                    @if ($purpConference)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
                                                                 </div>
-                                                                <div>Sports: <label id="purpSportField"></label> </div>
-                                                                <div>Other: <label id="purpOthField"></label> </div>
+                                                                <div>Sports: <label id="purpSportField"></label>
+                                                                    @if ($purpSports)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
+                                                                <div>Other: <label id="purpOthField"></label>
+                                                                    @if ($purpOther)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -1132,24 +1208,75 @@
                                                         <div class="row">
                                                             <div class="col-lg-3">
                                                                 <div>Apartment: <label id="accoAptField"></label>
+                                                                    @if ($accApt)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
                                                                 </div>
                                                                 <div>Guest House: <label id="accoGuestField"></label>
+                                                                    @if ($accGuest)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
                                                                 </div>
                                                                 <div>Other: <label id="accoOthField"></label> </div>
+                                                                @if ($accOther)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
                                                                 <div>Specify: <label id="accoSpecifyField"></label>
+                                                                    {{ $accomodation_other}}
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <div>Bed & Breakfast: <label id="accoBedField"></label>
+                                                                    @if ($accBed)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
                                                                 </div>
-                                                                <div>Hotel: <label id="accoHotelField"></label> </div>
-                                                                <div>Visit: <label id="purpVisitField"></label> </div>
+                                                                <div>Hotel: <label id="accoHotelField"></label>
+                                                                    @if ($accHotel)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
+                                                                <div>Visit: <label id="purpVisitField"></label>
+                                                                    @if ($accGuest)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <div>Dive: <label id="accoDiveField"></label> </div>
+                                                                <div>Dive: <label id="accoDiveField"></label>
+                                                                    @if ($accDive)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
                                                                 <div>Private Residence: <label
-                                                                        id="accoPrivateField"></label> </div>
-                                                                <div>Other: <label id="purpOthField"></label> </div>
+                                                                        id="accoPrivateField"></label>
+                                                                        @if ($accResidence)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
+                                                                <div>Other: <label id="purpOthField"></label>
+                                                                    @if ($accOther)
+                                                                        Yes
+                                                                    @else
+                                                                        No
+                                                                    @endif
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -1161,73 +1288,40 @@
                                                     <h6 class="font-weight-bolder mb-3">Customs:</h6>
                                                     <div class="text-dark-50 line-height-lg">
 
-                                                        <div class="row">
-                                                            <div class="col-lg-3">
-                                                                <div>Number of Pieces of Luggage</div>
-                                                                <div>Accompanied<label id="numLuggageAccField"></label>
-                                                                </div>
-                                                                <div>Unaccompanied<label
-                                                                        id="numLuggageUnAccField"></label></div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div>
-                                                            <label class="form-check-label">
-                                                                2. I am (We are) bringing:
-                                                            </label>
-                                                            <label class="form-check-label">
-                                                                (a) fruits, plants, cut flowers, vegetables, soil, meat,
-                                                                live animals and organism, honey, wildlife products,
-                                                                plant material,
-                                                                food, animal products or live birds
-                                                            </label>
-                                                            <label id="labelcusQuestFruits"></label>
-                                                        </div>
-
-                                                        <div>
-                                                            <label class="form-check-label">
-                                                                3. I am (We are) bringing:
-                                                            </label>
-                                                            <label class="form-check-label">
-                                                                (b) pharmaceuticals, narcotics and other illicit
-                                                                drugs,and biological substaances
-                                                            </label>
-                                                            <label id="labelcusQuestPhar"></label>
-                                                        </div>
-
-                                                        <div>
-                                                            <label class="form-check-label">
-                                                                4. I am (We are) bringing:
-                                                            </label>
-                                                            <label class="form-check-label">
-                                                                (c) arms, ammunication, explosives, fireworks, toy guns
-                                                                or other weapons
-                                                            </label>
-                                                            <label id="labelcusQuestArms"></label>
-                                                        </div>
-
-                                                        <div>
-                                                            <label class="form-check-label">
-                                                                5. I am (We are) bringing:
-                                                            </label>
-                                                            <label class="form-check-label">
-                                                                (articles for sale, samples used for soliciitng orders
-                                                                or goods that are not considered personal effects)
-                                                            </label>
-                                                            <label id="labelcusQuestMerch"></label>
-                                                        </div>
-
-
-                                                        <div>
-                                                            <label class="form-check-label">
-                                                                5. I am (We are) bringing:
-                                                            </label>
-                                                            <label class="form-check-label">
-                                                                carrying currency or monetary instruments over (EC
-                                                                $10,000) or equivalent:
-                                                            </label>
-                                                            <label id="labelcusQuestMon"></label>
-                                                        </div>
+                                                        <p>(1). I am (We are) bringing fruits, plants, cut flowers, vegetables, soil, meat, live animals and organism, honey, wildlife products, plant material, food, animal products or live birds:</p>
+                                                @if ($cusQuestFruits == true)
+                                                    <div class="badge badge-danger">Yes</div>
+                                                @else
+                                                    <div class="badge badge-success">No</div>
+                                                @endif
+                                                <br />
+                                                <p>(2). I am (We are) bringing pharmaceuticals, narcotics and other illicit drugs,and biological substaances:</p>
+                                                @if ($cusQuestPhar == true)
+                                                    <div class="badge badge-danger">Yes</div>
+                                                @else
+                                                    <div class="badge badge-success">No</div>
+                                                @endif
+                                                <br />
+                                                <p>(3). I am (We are) bringing arms, ammunication, explosives, fireworks, toy guns or other weapons :</p>
+                                                @if ($cusQuestArms == true)
+                                                    <div class="badge badge-danger">Yes</div>
+                                                @else
+                                                    <div class="badge badge-success">No</div>
+                                                @endif
+                                                <br />
+                                                <p>(4). I have(We have) commercial merchandise: (articles for sale, samples used for soliciitng orders or goods that are not considered personal effects)) </p>
+                                                @if ($cusQuestMerch == true)
+                                                    <div class="badge badge-danger">Yes</div>
+                                                @else
+                                                    <div class="badge badge-success">No</div>
+                                                @endif
+                                                <br />
+                                                <p>(5). I am(We are) carrying currency or monetary instruments over (EC $10,000) or equivalen </p>
+                                                @if ($cusQuestMon == true)
+                                                    <div class="badge badge-danger">Yes</div>
+                                                @else
+                                                    <div class="badge badge-success">No</div>
+                                                @endif
 
 
 
